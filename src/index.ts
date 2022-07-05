@@ -76,6 +76,7 @@ interface MathFunction {
 const add: MathFunction = (x: number, y: number): number => x+y
 const sub: MathFunction = (x: number, y: number): number => x-y
 
+
 // Type vs Interface
   // Types can be used with Primitives and Unions
   // Interfaces cannot be used with Primitives and Unions
@@ -85,9 +86,10 @@ const sub: MathFunction = (x: number, y: number): number => x-y
   const p2: Point = "Test"
 
   // Classes
+  interface PersonInterface { id: number; name: string, register(): string }
 
-  class Person{
-    private id: number
+  class Person implements PersonInterface {
+     id: number
     name: string
 
     constructor(id: number, name:string){
@@ -101,9 +103,31 @@ const sub: MathFunction = (x: number, y: number): number => x-y
   const rue = new Person(10, "Rue")
   const jon = new Person(12, "Jon")
 
-  console.log( rue.register())
-
-  // Data Modifiers
+  // console.log( rue.register())
+// Data Modifiers
   // Public, Private , Protected 
     // Private -> only accessible within the class
     // Protected ->  only accessible within the class or classes that extend it
+
+//Subclass
+  class Employee extends Person {
+    position: string
+
+    constructor(id: number, name: string, position:string){
+      super(id,name)
+      this.position = position
+    }
+  }
+   const emp = new Employee(3,"Chase","Developer")
+
+  //  console.log(emp.register())
+  
+
+  // Generics 
+
+  function getArray<T>(items: T[]):T[] {
+    return new Array().concat(items)
+  }
+
+  let numArray = getArray<number>([1,2,3,4,5,6,7])
+  let strArray = getArray<string>(['jon','jill','jack','james','jess','jake','jay'])

@@ -44,7 +44,6 @@ const result = addNum(1, 2);
 function log(message) {
     console.log(message);
 }
-const output = log('Hello World');
 const testUser = { id: 3, name: "Rue" };
 const add = (x, y) => x + y;
 const sub = (x, y) => x - y;
@@ -61,4 +60,15 @@ class Person {
 }
 const rue = new Person(10, "Rue");
 const jon = new Person(12, "Jon");
-console.log(rue.register());
+class Employee extends Person {
+    constructor(id, name, position) {
+        super(id, name);
+        this.position = position;
+    }
+}
+const emp = new Employee(3, "Chase", "Developer");
+function getArray(items) {
+    return new Array().concat(items);
+}
+let numArray = getArray([1, 2, 3, 4, 5, 6, 7]);
+let strArray = getArray(['jon', 'jill', 'jack', 'james', 'jess', 'jake', 'jay']);
